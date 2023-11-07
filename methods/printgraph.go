@@ -17,9 +17,9 @@ func printSolution(lemin LemIn, possiblePath [][]int, result []LemIn) {
 	for i < len(possiblePath) {
 		ants := lemin.Ants
 		turn := 0
-		for move(possiblePath[i], ants, result, false) { // when last ant is not in end room
+		for Move(possiblePath[i], ants, result, false) { // when last ant is not in end room
 			if ants > 0 {
-				moveFromStart(possiblePath[i], &ants, result, false)
+				MoveFromStart(possiblePath[i], &ants, result, false)
 			}
 			turn++
 		}
@@ -35,15 +35,15 @@ func printSolution(lemin LemIn, possiblePath [][]int, result []LemIn) {
 		}
 	}
 	ants := lemin.Ants
-	for move(possiblePath[indx], ants, result, true) {
+	for Move(possiblePath[indx], ants, result, true) {
 		if ants > 0 {
-			moveFromStart(possiblePath[indx], &ants, result, true)
+			MoveFromStart(possiblePath[indx], &ants, result, true)
 		}
 		fmt.Println()
 	}
 }
 
-func moveFromStart(path []int, ants *int, result []LemIn, isPrint bool) {
+func MoveFromStart(path []int, ants *int, result []LemIn, isPrint bool) {
 	i := 0
 	for i < len(path) && *ants > 0 {
 		if *ants < 3 && len(path) == 2 && len(result[path[i]].Path) == 4 && result[0].Ants == 20 && result[0].End.Name == "3" { // magic code
@@ -59,7 +59,7 @@ func moveFromStart(path []int, ants *int, result []LemIn, isPrint bool) {
 	}
 }
 
-func move(path []int, ants int, result []LemIn, isPrint bool) bool {
+func Move(path []int, ants int, result []LemIn, isPrint bool) bool {
 	if ants == 0 {
 		isOver := false
 		i := 0
