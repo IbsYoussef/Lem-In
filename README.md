@@ -2,7 +2,7 @@
 ### Usage Instructions to run visualiser
 `go build && cd visualiser && go build && cd ..`
 
-`./lem-in examples/example05.txt | visualizer/visualizer`
+`./lem-in examples/example05.txt | visualiser/visualiser`
 
 Run test file: `go test`
 
