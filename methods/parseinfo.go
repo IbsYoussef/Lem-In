@@ -61,8 +61,26 @@ func ParseFile(lemin *LemIn, s string) error {
 		}
 		i++
 	}
+	err = isAllCredentialsValid(lemin)
+	if err != nil {
+		return err
+	}
 	return nil
 }
+
+func isAllCredentialsValid(lemin *LemIn) error {
+	if len(lemin.Rooms) == 0 {
+		return errors.New("ERROR: invalid data format, no rooms")
+	}
+	if len(lemin.Links) == 0 {
+		return errors.New("ERROR: invalid data format, no links")
+	}
+	if lemin.Start.Name == "" || lemin.End.Name == "" {
+		return errors.New("ERROR: invalid data format, no start or end room")
+	}
+	return nil
+}
+
 func checkDublicatesInRooms(lemin *LemIn) error {
 	count := 0
 	for _, name := range lemin.Rooms {

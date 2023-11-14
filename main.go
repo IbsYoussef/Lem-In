@@ -18,7 +18,7 @@ func main() {
 		}
 		err = methods.ParseFile(&lemin, s)
 		if err != nil {
-			fmt.Printf("%v", err.Error())
+			fmt.Printf("%v\n", err.Error())
 			return
 		}
 
