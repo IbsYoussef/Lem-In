@@ -23,12 +23,18 @@ func ParseFile(lemin *LemIn, s string) error {
 	for i < l-k {
 		if str[i] == "##start" { // add start room
 			i++
+			if i >= l-k {
+				return errors.New("ERROR: invalid data format, invalid start room")
+			}
 			err = parseRoom(lemin, str[i], 1)
 			if err != nil {
 				return errors.New("ERROR: invalid data format, invalid start room")
 			}
 		} else if str[i] == "##end" { // add end room
 			i++
+			if i >= l-k {
+				return errors.New("ERROR: invalid data format, invalid end room")
+			}
 			err = parseRoom(lemin, str[i], -1)
 			if err != nil {
 				return errors.New("ERROR: invalid data format, invalid end room")
