@@ -75,9 +75,6 @@ func ParseFile(lemin *LemIn, s string) error {
 }
 
 func isAllCredentialsValid(lemin *LemIn) error {
-	if len(lemin.Rooms) == 0 {
-		return errors.New("ERROR: invalid data format, no rooms")
-	}
 	if len(lemin.Links) == 0 {
 		return errors.New("ERROR: invalid data format, no links")
 	}
